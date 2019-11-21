@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Rubocop cops that provide linting for Academia.edu's codebase"
   s.authors     = ["Nick White"]
   s.email       = 'nickwhite@academia.edu'
-  s.files       = ["lib/rubocop-academia.rb"]
+  s.files       = ["lib/rubocop-academia.rb", "lib/rubocop/cop/academia/on_replica.rb"]
   s.homepage    = 'https://rubygems.org/gems/rubocop-academia'
   s.license     = 'MIT'
 end
