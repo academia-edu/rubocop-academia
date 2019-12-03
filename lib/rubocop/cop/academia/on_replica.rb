@@ -11,6 +11,7 @@ module RuboCop
 
           return unless method_name == :on_replica
           return if match_octopus(receiver) && args.any?
+          return if match_premium_analytics(receiver)
 
           add_offense(node)
         end
@@ -19,6 +20,10 @@ module RuboCop
 
         def match_octopus(node)
           node && node.const_name == "Octopus"
+        end
+
+        def match_premium_analytics(node)
+          node && node.const_name == "PremiumAnalytics"
         end
       end
     end

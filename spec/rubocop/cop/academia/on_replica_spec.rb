@@ -42,4 +42,26 @@ describe RuboCop::Cop::Academia::OnReplica do
 
     expect(cop.offenses).to be_empty
   end
+
+  it "does not register an offense when using PremiumAnalytics.on_replica" do
+    inspect_source(<<~RUBY)
+      PremiumAnalytics.on_replica.do_something
+    RUBY
+
+    expect(cop.offenses).to be_empty
+  end
+
+  it "does not register an offense when defining on_replica" do
+    inspect_source(<<~RUBY)
+      def on_replica(shard = :main)
+        do_something
+      end
+
+      def self.on_replica(shard = :main)
+        do_something_else
+      end
+    RUBY
+
+    expect(cop.offenses).to be_empty
+  end
 end
